@@ -1,0 +1,139 @@
+% Setting up the document class for a standard article
+\documentclass[a4paper,12pt]{article}
+
+% Including essential packages for mathematical typesetting and structure
+\usepackage{amsmath} % For advanced math environments
+\usepackage{amssymb} % For additional math symbols
+\usepackage{geometry} % For page layout control
+\geometry{margin=1in} % Setting 1-inch margins
+\usepackage{parskip} % For paragraph spacing instead of indentation
+
+% Including font package last for proper configuration
+\usepackage{noto} % Using Noto font for compatibility
+
+% Beginning the document
+\begin{document}
+
+% Creating a title for the document
+\title{Solution to the Differential Equation \(\ddot{x} + \beta \dot{x} = g\)}
+\author{}
+\date{}
+\maketitle
+
+% Starting the solution section
+\section*{Solution}
+
+To solve the differential equation \(\ddot{x} + \beta \dot{x} = g\), where \(g\) is a constant, \(\dot{x} = \frac{dx}{dt}\), and \(\ddot{x} = \frac{d^2x}{dt^2}\), we recognize it as a second-order linear ordinary differential equation with constant coefficients and a constant forcing term. Below is a step-by-step solution.
+
+% Step 1: Rewriting the equation
+\subsection*{Step 1: Rewrite the Equation}
+The equation is:
+\begin{equation}
+\ddot{x} + \beta \dot{x} = g
+\end{equation}
+This can be written in standard form:
+\begin{equation}
+\ddot{x} + \beta \dot{x} - g = 0
+\end{equation}
+The left-hand side involves derivatives, and the right-hand side is a constant, indicating a non-homogeneous linear ODE.
+
+% Step 2: Solving the homogeneous equation
+\subsection*{Step 2: Solve the Homogeneous Equation}
+First, solve the associated homogeneous equation:
+\begin{equation}
+\ddot{x} + \beta \dot{x} = 0
+\end{equation}
+Assume a solution of the form \(x(t) = e^{rt}\). Substituting gives the characteristic equation:
+\begin{equation}
+r^2 + \beta r = 0
+\end{equation}
+\[
+r(r + \beta) = 0
+\]
+The roots are:
+\[
+r = 0 \quad \text{or} \quad r = -\beta
+\]
+Since the roots are real and distinct, the homogeneous solution is:
+\begin{equation}
+x_h(t) = c_1 + c_2 e^{-\beta t}
+\end{equation}
+where \(c_1\) and \(c_2\) are arbitrary constants.
+
+% Step 3: Finding a particular solution
+\subsection*{Step 3: Find a Particular Solution}
+For the non-homogeneous equation \(\ddot{x} + \beta \dot{x} = g\), since \(g\) is a constant and \(r = 0\) is a root of the characteristic equation, try a particular solution of the form:
+\begin{equation}
+x_p(t) = A t
+\end{equation}
+Then:
+\[
+\dot{x}_p = A, \quad \ddot{x}_p = 0
+\]
+Substitute into the differential equation:
+\[
+0 + \beta \cdot A = g
+\]
+\[
+A = \frac{g}{\beta} \quad (\beta \neq 0)
+\]
+Thus, the particular solution is:
+\begin{equation}
+x_p(t) = \frac{g}{\beta} t
+\end{equation}
+
+% Step 4: General solution
+\subsection*{Step 4: General Solution}
+The general solution is the sum of the homogeneous and particular solutions:
+\begin{equation}
+x(t) = x_h(t) + x_p(t) = c_1 + c_2 e^{-\beta t} + \frac{g}{\beta} t
+\end{equation}
+
+% Step 5: Case when beta = 0
+\subsection*{Step 5: Consider the Case \(\beta = 0\)}
+If \(\beta = 0\), the equation becomes:
+\begin{equation}
+\ddot{x} = g
+\end{equation}
+Integrate twice:
+\[
+\dot{x} = \int g \, dt = g t + c_1
+\]
+\[
+x = \int (g t + c_1) \, dt = \frac{1}{2} g t^2 + c_1 t + c_2
+\]
+So, for \(\beta = 0\):
+\begin{equation}
+x(t) = \frac{1}{2} g t^2 + c_1 t + c_2
+\end{equation}
+
+% Step 6: Interpreting the solution
+\subsection*{Step 6: Interpret the Solution}
+\begin{itemize}
+    \item For \(\beta \neq 0\), the solution \(x(t) = c_1 + c_2 e^{-\beta t} + \frac{g}{\beta} t\) includes:
+    \begin{itemize}
+        \item A constant term \(c_1\).
+        \item An exponential term \(c_2 e^{-\beta t}\), which decays if \(\beta > 0\) or grows if \(\beta < 0\).
+        \item A linear term \(\frac{g}{\beta} t\), representing the effect of the constant forcing \(g\).
+    \end{itemize}
+    \item For \(\beta = 0\), the solution is quadratic, indicating unbounded growth.
+    \item Constants \(c_1\) and \(c_2\) are determined by initial conditions (e.g., \(x(0)\) and \(\dot{x}(0)\)).
+\end{itemize}
+
+% Final answer
+\subsection*{Final Answer}
+The solution to the differential equation \(\ddot{x} + \beta \dot{x} = g\) is:
+\begin{itemize}
+    \item If \(\beta \neq 0\):
+    \begin{equation}
+    x(t) = c_1 + c_2 e^{-\beta t} + \frac{g}{\beta} t
+    \end{equation}
+    \item If \(\beta = 0\):
+    \begin{equation}
+    x(t) = \frac{1}{2} g t^2 + c_1 t + c_2
+    \end{equation}
+\end{itemize}
+where \(c_1\) and \(c_2\) are constants determined by initial conditions.
+
+% Ending the document
+\end{document}

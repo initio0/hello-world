@@ -1,0 +1,182 @@
+% Setting up the document class for a standard article
+\documentclass[a4paper,12pt]{article}
+
+% Including essential packages for mathematical typesetting and structure
+\usepackage{amsmath} % For advanced math environments
+\usepackage{amssymb} % For additional math symbols
+\usepackage{geometry} % For page layout control
+\geometry{margin=1in} % Setting 1-inch margins
+\usepackage{parskip} % For paragraph spacing instead of indentation
+
+% Including font package last for proper configuration
+\usepackage{noto} % Using Noto font for compatibility
+
+% Beginning the document
+\begin{document}
+
+% Creating a title for the document
+\title{Solution to the Differential Equation \(mg - \beta \dot{x}^2 - k(x - x_0) = m \ddot{x}\)}
+\author{}
+\date{}
+\maketitle
+
+% Starting the solution section
+\section*{Solution with Initial Conditions \(x(0) = x_0\), \(\dot{x}(0) = v_0\)}
+
+Given the differential equation \(mg - \beta \dot{x}^2 - k(x - x_0) = m \ddot{x}\) with initial conditions \(x(0) = x_0\) and \(\dot{x}(0) = v_0\), where \(m\), \(g\), \(\beta\), \(k\), and \(x_0\) are constants, \(\dot{x} = \frac{dx}{dt}\), and \(\ddot{x} = \frac{d^2x}{dt^2}\), we solve as follows. The equation is nonlinear due to the \(\beta \dot{x}^2\) term, complicating analytical solutions.
+
+% Step 1: Rewriting and simplifying
+\subsection*{Step 1: Rewrite and Simplify}
+The equation is:
+\begin{equation}
+m \ddot{x} + \beta \dot{x}^2 + k(x - x_0) = mg
+\end{equation}
+Substitute \(y = x - x_0\), so \(x = y + x_0\), \(\dot{x} = \dot{y}\), \(\ddot{x} = \ddot{y}\):
+\begin{equation}
+m \ddot{y} + \beta \dot{y}^2 + k y = mg
+\end{equation}
+The initial conditions become:
+\[
+y(0) = x(0) - x_0 = x_0 - x_0 = 0, \quad \dot{y}(0) = \dot{x}(0) = v_0
+\]
+
+% Step 2: Equilibrium analysis
+\subsection*{Step 2: Equilibrium Analysis}
+Set \(\ddot{y} = \dot{y} = 0\):
+\[
+k y = mg \implies y = \frac{mg}{k}
+\]
+Thus, the equilibrium position is \(x = x_0 + \frac{mg}{k}\), where the spring force balances gravity.
+
+% Step 3: Attempt analytical solution
+\subsection*{Step 3: Attempt Analytical Solution}
+The nonlinear term \(\beta \dot{y}^2\) makes analytical solutions challenging. We explore homogeneous and particular solutions.
+
+\subsubsection*{Homogeneous Equation}
+For \(mg = 0\) and \(\beta = 0\):
+\begin{equation}
+m \ddot{y} + k y = 0
+\end{equation}
+\[
+\ddot{y} + \omega^2 y = 0, \quad \omega = \sqrt{\frac{k}{m}}
+\]
+The solution is:
+\begin{equation}
+y_h(t) = c_1 \cos(\omega t) + c_2 \sin(\omega t)
+\end{equation}
+However, the \(\beta \dot{y}^2\) term prevents direct use.
+
+\subsubsection*{Particular Solution}
+Try \(y_p = A\) (constant):
+\[
+\ddot{y}_p = 0, \quad \dot{y}_p = 0
+\]
+\[
+k A = mg \implies A = \frac{mg}{k}
+\]
+\[
+y_p(t) = \frac{mg}{k}, \quad x_p(t) = x_0 + \frac{mg}{k}
+\]
+Verify:
+\[
+m \cdot 0 + \beta \cdot 0 + k \cdot \frac{mg}{k} = mg
+\]
+This satisfies the equation.
+
+% Step 4: Phase-plane analysis
+\subsection*{Step 4: Phase-Plane Analysis}
+Set \(\dot{y} = v\), so \(\ddot{y} = \frac{dv}{dt} = v \frac{dv}{dy}\):
+\begin{equation}
+m v \frac{dv}{dy} + \beta v^2 + k y = mg
+\end{equation}
+\[
+v \frac{dv}{dy} = \frac{mg - \beta v^2 - k y}{m}
+\]
+Or in time:
+\begin{equation}
+\frac{dv}{dt} = \frac{mg - \beta v^2 - k y}{m}
+\end{equation}
+With \(\frac{dy}{dt} = v\), we have:
+\begin{align}
+\frac{dy}{dt} &= v \\
+\frac{dv}{dt} &= \frac{mg - \beta v^2 - k y}{m}
+\end{align}
+Initial conditions: \(y(0) = 0\), \(v(0) = v_0\). This system is nonlinear and typically requires numerical methods.
+
+% Step 5: Apply initial conditions
+\subsection*{Step 5: Apply Initial Conditions}
+The particular solution \(y_p = \frac{mg}{k}\) gives \(y(0) = \frac{mg}{k} \neq 0\), which doesn’t satisfy the initial condition. The nonlinear term requires a dynamic solution.
+
+% Step 6: Terminal velocity
+\subsection*{Step 6: Terminal Velocity}
+Assume \(\ddot{y} = 0\), \(\dot{y} = v_t\):
+\[
+\beta v_t^2 + k y = mg
+\]
+At equilibrium \(y = \frac{mg}{k}\):
+\[
+\beta v_t^2 = 0 \implies v_t = 0
+\]
+This suggests no terminal velocity at equilibrium.
+
+% Step 7: Linear approximation
+\subsection*{Step 7: Linear Approximation}
+For small \(\beta\), approximate \(\beta \dot{y}^2 \approx 0\):
+\begin{equation}
+m \ddot{y} + k y \approx mg
+\end{equation}
+\[
+\ddot{y} + \omega^2 y = g, \quad \omega = \sqrt{\frac{k}{m}}
+\]
+Particular solution: \(y_p = \frac{mg}{k}\). Homogeneous solution:
+\[
+y_h = c_1 \cos(\omega t) + c_2 \sin(\omega t)
+\]
+General solution:
+\begin{equation}
+y(t) = c_1 \cos(\omega t) + c_2 \sin(\omega t) + \frac{mg}{k}
+\end{equation}
+Apply initial conditions:
+\[
+y(0) = 0 = c_1 + \frac{mg}{k} \implies c_1 = -\frac{mg}{k}
+\]
+\[
+\dot{y}(t) = -c_1 \omega \sin(\omega t) + c_2 \omega \cos(\omega t), \quad \dot{y}(0) = v_0 = c_2 \omega \implies c_2 = \frac{v_0}{\omega}
+\]
+\[
+y(t) = -\frac{mg}{k} \cos(\omega t) + \frac{v_0}{\omega} \sin(\omega t) + \frac{mg}{k}
+\]
+\[
+x(t) = x_0 + \frac{mg}{k} \left(1 - \cos(\omega t)\right) + \frac{v_0}{\omega} \sin(\omega t), \quad \omega = \sqrt{\frac{k}{m}}
+\]
+
+% Step 8: Numerical solution
+\subsection*{Step 8: Numerical Solution}
+The nonlinear system:
+\begin{align}
+\frac{dy}{dt} &= v \\
+\frac{dv}{dt} &= \frac{mg - \beta v^2 - k y}{m}
+\end{align}
+with \(y(0) = 0\), \(v(0) = v_0\) requires numerical methods (e.g., Runge-Kutta) for an exact solution.
+
+% Final answer
+\subsection*{Final Answer}
+The differential equation \(mg - \beta \dot{x}^2 - k(x - x_0) = m \ddot{x}\) with \(x(0) = x_0\), \(\dot{x}(0) = v_0\) is nonlinear. In terms of \(y = x - x_0\):
+\begin{equation}
+m \ddot{y} + \beta \dot{y}^2 + k y = mg, \quad y(0) = 0, \quad \dot{y}(0) = v_0
+\end{equation}
+\begin{itemize}
+    \item \textbf{Approximate solution} (small \(\beta\)):
+    \begin{equation}
+    x(t) \approx x_0 + \frac{mg}{k} \left(1 - \cos\left(\sqrt{\frac{k}{m}} t\right)\right) + \frac{v_0}{\sqrt{\frac{k}{m}}} \sin\left(\sqrt{\frac{k}{m}} t\right)
+    \end{equation}
+    \item \textbf{Exact solution}: Solve the system:
+    \begin{align}
+    \frac{dy}{dt} &= v \\
+    \frac{dv}{dt} &= \frac{mg - \beta v^2 - k y}{m}
+    \end{align}
+    numerically with \(y(0) = 0\), \(v(0) = v_0\). The behavior depends on \(m\), \(\beta\), \(k\), \(g\), and \(v_0\).
+\end{itemize}
+
+% Ending the document
+\end{document}

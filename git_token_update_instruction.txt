@@ -1,0 +1,11 @@
+Verify the Remote URL
+
+Check the remote URL of your repository by running:
+bashgit remote -v
+
+If the URL starts with https://github.com/, Git is using HTTPS, and you need to configure it to use the token.
+To authenticate with your token over HTTPS, you can modify the remote URL to include the token directly:
+bashgit remote set-url origin https://<GITHUB_TOKEN>@github.com/<username>/<repository>.git
+Replace <GITHUB_TOKEN> with your actual token, <username> with your GitHub username, and <repository> with the repository name.
+
+Note: Including the token in the URL is not the most secure approach, as it exposes the token in plain text. A better approach is to use a credential helper (see below).
